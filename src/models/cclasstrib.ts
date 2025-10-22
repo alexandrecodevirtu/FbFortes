@@ -1,0 +1,31 @@
+export interface CCLASSTRIB {
+  ID?: number;
+  CST_IBSCBS_ID: number;
+  CODIGO: string;
+  DESCRICAO: string;
+  PERCENTUAL_REDUCAO_IBS: number;
+  PERCENTUAL_REDUCAO_CBS: number;
+  REDUCAO_BC: boolean;
+  CREDITO_PRESUMIDO: boolean;
+  ESTORNO_CREDITO: boolean;
+  TIPO_ALIQUOTA: string;
+  NFE: boolean;
+  NFCE: boolean;
+  CTE: boolean;
+  CTE_OS: boolean;
+  BPE: boolean;
+  NF3E: boolean;
+  NFCOM: boolean;
+  NFSE: boolean;
+  BPE_TM: boolean;
+  BPE_TA: boolean;
+  NFAG: boolean;
+  NFSVIA: boolean;
+  NFABI: boolean;
+  NFGAS: boolean;
+  DERE: boolean;
+  NUMERO_ANEXO?: string;
+  URL_LEGISLACAO?: string;
+  CREATED_AT?: string;
+  UPDATED_AT?: string;
+}
