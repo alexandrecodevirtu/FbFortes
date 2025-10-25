@@ -3,9 +3,8 @@ import express, { Express } from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import { initializePool, closePool } from './db/firebird';
-import cstIbscbsRouter from './routes/cst_ibscbs';
-import cclasstribRouter from './routes/cclasstrib';
 import cnhRouter from './routes/cnh';
+import rodorricaLogRouter from './routes/rodorrica_log';
 import { errorHandler } from './middleware/errorHandler';
 import logger from './utils/logger';
 
@@ -22,9 +21,8 @@ app.get('/', (req, res) => {
   res.json({ message: 'API Firebird está rodando!', version: '1.0.0' });
 });
 
-app.use('/cst_ibscbs', cstIbscbsRouter);
-app.use('/cclasstrib', cclasstribRouter);
 app.use('/cnh', cnhRouter);
+app.use('/rodorrica_log', rodorricaLogRouter);
 
 // Middleware de erro (deve ser o último)
 app.use(errorHandler);

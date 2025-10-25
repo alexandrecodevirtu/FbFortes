@@ -1,92 +1,27 @@
 import Joi from 'joi';
 
-export const createCstIbscbsSchema = Joi.object({
-  CODIGO: Joi.string().max(6).required(),
-  DESCRICAO: Joi.string().max(200).required(),
-  TRIBUTACAO_REGULAR: Joi.boolean().default(false),
-  REDUCAO_BC_CST: Joi.boolean().default(false),
-  REDUCAO_ALIQUOTA: Joi.boolean().default(false),
-  TRANSFERENCIA_CREDITO: Joi.boolean().default(false),
-  DIFERIMENTO: Joi.boolean().default(false),
-  MONOFASICA: Joi.boolean().default(false),
-  CREDITO_PRESUMIDO_IBS_ZFM: Joi.boolean().default(false),
-  AJUSTE_COMPETENCIA: Joi.boolean().default(false),
-});
-
-export const updateCstIbscbsSchema = Joi.object({
-  CODIGO: Joi.string().max(6),
-  DESCRICAO: Joi.string().max(200),
-  TRIBUTACAO_REGULAR: Joi.boolean(),
-  REDUCAO_BC_CST: Joi.boolean(),
-  REDUCAO_ALIQUOTA: Joi.boolean(),
-  TRANSFERENCIA_CREDITO: Joi.boolean(),
-  DIFERIMENTO: Joi.boolean(),
-  MONOFASICA: Joi.boolean(),
-  CREDITO_PRESUMIDO_IBS_ZFM: Joi.boolean(),
-  AJUSTE_COMPETENCIA: Joi.boolean(),
-}).min(1);
-
-export const createCclasstribSchema = Joi.object({
-  CST_IBSCBS_ID: Joi.number().integer().required(),
-  CODIGO: Joi.string().max(10).required(),
-  DESCRICAO: Joi.string().required(),
-  PERCENTUAL_REDUCAO_IBS: Joi.number().precision(2).default(0),
-  PERCENTUAL_REDUCAO_CBS: Joi.number().precision(2).default(0),
-  REDUCAO_BC: Joi.boolean().default(false),
-  CREDITO_PRESUMIDO: Joi.boolean().default(false),
-  ESTORNO_CREDITO: Joi.boolean().default(false),
-  TIPO_ALIQUOTA: Joi.string().required(),
-  NFE: Joi.boolean().default(false),
-  NFCE: Joi.boolean().default(false),
-  CTE: Joi.boolean().default(false),
-  CTE_OS: Joi.boolean().default(false),
-  BPE: Joi.boolean().default(false),
-  NF3E: Joi.boolean().default(false),
-  NFCOM: Joi.boolean().default(false),
-  NFSE: Joi.boolean().default(false),
-  BPE_TM: Joi.boolean().default(false),
-  BPE_TA: Joi.boolean().default(false),
-  NFAG: Joi.boolean().default(false),
-  NFSVIA: Joi.boolean().default(false),
-  NFABI: Joi.boolean().default(false),
-  NFGAS: Joi.boolean().default(false),
-  DERE: Joi.boolean().default(false),
-  NUMERO_ANEXO: Joi.string().max(10),
-  URL_LEGISLACAO: Joi.string().max(255),
-});
-
-export const updateCclasstribSchema = Joi.object({
-  CST_IBSCBS_ID: Joi.number().integer(),
-  CODIGO: Joi.string().max(10),
-  DESCRICAO: Joi.string(),
-  PERCENTUAL_REDUCAO_IBS: Joi.number().precision(2),
-  PERCENTUAL_REDUCAO_CBS: Joi.number().precision(2),
-  REDUCAO_BC: Joi.boolean(),
-  CREDITO_PRESUMIDO: Joi.boolean(),
-  ESTORNO_CREDITO: Joi.boolean(),
-  TIPO_ALIQUOTA: Joi.string(),
-  NFE: Joi.boolean(),
-  NFCE: Joi.boolean(),
-  CTE: Joi.boolean(),
-  CTE_OS: Joi.boolean(),
-  BPE: Joi.boolean(),
-  NF3E: Joi.boolean(),
-  NFCOM: Joi.boolean(),
-  NFSE: Joi.boolean(),
-  BPE_TM: Joi.boolean(),
-  BPE_TA: Joi.boolean(),
-  NFAG: Joi.boolean(),
-  NFSVIA: Joi.boolean(),
-  NFABI: Joi.boolean(),
-  NFGAS: Joi.boolean(),
-  DERE: Joi.boolean(),
-  NUMERO_ANEXO: Joi.string().max(10),
-  URL_LEGISLACAO: Joi.string().max(255),
-}).min(1);
-
 export const paginationSchema = Joi.object({
   limit: Joi.number().integer().min(1).max(100).default(10),
   offset: Joi.number().integer().min(0).default(0),
   sortBy: Joi.string(),
   sortOrder: Joi.string().valid('ASC', 'DESC').default('ASC'),
 });
+
+export const createRodorricaLogSchema = Joi.object({
+  NOME_TABELA: Joi.string().max(50).required(),
+  TIPO_OPERACAO: Joi.string().valid('I', 'U', 'D').required(),
+  EMP_CODIGO: Joi.string().max(3).required(),
+  SERIE: Joi.string().max(1).allow(null, ''),
+  CODIGO: Joi.number().integer().required(),
+  REPLICADO: Joi.string().valid('S', 'N').default('N'),
+});
+
+export const updateRodorricaLogSchema = Joi.object({
+  NOME_TABELA: Joi.string().max(50),
+  TIPO_OPERACAO: Joi.string().valid('I', 'U', 'D'),
+  EMP_CODIGO: Joi.string().max(3),
+  SERIE: Joi.string().max(1).allow(null, ''),
+  CODIGO: Joi.number().integer(),
+  DATA_REPLICACAO: Joi.date(),
+  REPLICADO: Joi.string().valid('S', 'N'),
+}).min(1);
