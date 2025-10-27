@@ -53,3 +53,38 @@ begin
 end
 ^
 SET TERM ; ^
+
+
+
+CREATE TABLE IF NOT EXISTS public."Diaria"
+(
+    id integer NOT NULL DEFAULT nextval('"Diaria_id_seq"'::regclass),
+    emp_codigo character varying(3) COLLATE pg_catalog."default" NOT NULL,
+    cte integer NOT NULL,
+    serie character varying(1) COLLATE pg_catalog."default",
+    cte_complementar integer,
+    motorista_id character varying(10) COLLATE pg_catalog."default" NOT NULL,
+    nome_motorista character varying(40) COLLATE pg_catalog."default" NOT NULL,
+    dt character varying(10) COLLATE pg_catalog."default",
+    data_emissao date NOT NULL,
+    data_entrega date NOT NULL,
+    data_baixa date,
+    qtde_diaria_paga smallint NOT NULL,
+    valor_diaria_paga numeric(13,2) NOT NULL DEFAULT 0,
+    total_diaria_paga numeric(13,2) NOT NULL DEFAULT 0,
+    qtde_diaria_recebida smallint DEFAULT 0,
+    valor_diaria_recebida numeric(13,2) DEFAULT 0,
+    total_diaria_recebida numeric(13,2) DEFAULT 0,
+    saldo numeric(13,2) DEFAULT 0,
+    baixado boolean NOT NULL DEFAULT false,
+    criado_em timestamp with time zone,
+    excluido_em timestamp without time zone,
+    usuario character varying(15) COLLATE pg_catalog."default",
+    supervisor character varying(15) COLLATE pg_catalog."default",
+    CONSTRAINT "Diaria_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."Diaria"
+    OWNER to postgres;
