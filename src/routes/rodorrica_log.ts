@@ -55,22 +55,22 @@ router.get('/:id', asyncHandler(async (req: Request, res: Response) => {
   res.json(record);
 }));
 
-/**
- * POST /rodorrica_log - Criar novo registro
- */
-router.post('/', validateRequest(createRodorricaLogSchema), asyncHandler(async (req: Request, res: Response) => {
-  const record = await RodorricaLogService.create(req.body);
-  res.status(201).json(record);
-}));
+// /**
+//  * POST /rodorrica_log - Criar novo registro
+//  */
+// router.post('/', validateRequest(createRodorricaLogSchema), asyncHandler(async (req: Request, res: Response) => {
+//   const record = await RodorricaLogService.create(req.body);
+//   res.status(201).json(record);
+// }));
 
-/**
- * PUT /rodorrica_log/:id - Atualizar um registro
- */
-router.put('/:id', validateRequest(updateRodorricaLogSchema), asyncHandler(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const record = await RodorricaLogService.update(parseInt(id), req.body);
-  res.json(record);
-}));
+// /**
+//  * PUT /rodorrica_log/:id - Atualizar um registro
+//  */
+// router.put('/:id', validateRequest(updateRodorricaLogSchema), asyncHandler(async (req: Request, res: Response) => {
+//   const { id } = req.params;
+//   const record = await RodorricaLogService.update(parseInt(id), req.body);
+//   res.json(record);
+// }));
 
 /**
  * PATCH /rodorrica_log/:id/replicado - Marcar um registro como replicado
@@ -93,13 +93,13 @@ router.patch('/bulk/replicado', asyncHandler(async (req: Request, res: Response)
   res.json(result);
 }));
 
-/**
- * DELETE /rodorrica_log/:id - Deletar um registro
- */
-router.delete('/:id', asyncHandler(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const result = await RodorricaLogService.delete(parseInt(id));
-  res.json(result);
-}));
+// /**
+//  * DELETE /rodorrica_log/:id - Deletar um registro
+//  */
+// router.delete('/:id', asyncHandler(async (req: Request, res: Response) => {
+//   const { id } = req.params;
+//   const result = await RodorricaLogService.delete(parseInt(id));
+//   res.json(result);
+// }));
 
 export default router;

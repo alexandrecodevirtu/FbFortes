@@ -36,7 +36,7 @@ export class CNHRepository {
       getConnection((err, db) => {
         if (err || !db) return reject(new Error('Erro de conexão com o banco'));
         // db.query('SELECT * FROM CNH WHERE EMP_CODIGO = ? AND SERIE = ? AND CTRC = ?', [emp_codigo, serie, ctrc], (err: any, result: any) => {
-        db.query('SELECT EMP_CODIGO, SERIE, CTRC, DATA, CTRCREDESP, EMP_CODIGO_REDESPACHO, SERIE_REDESPACHO, VRDIARIAS FROM CNH WHERE EMP_CODIGO = ? AND SERIE = ? AND CTRC = ? AND RODORICA_REPLICA = 0', [emp_codigo, serie, ctrc], (err: any, result: any) => {
+        db.query('SELECT * FROM CNH WHERE EMP_CODIGO = ? AND SERIE = ? AND CTRC = ?', [emp_codigo, serie, ctrc], (err: any, result: any) => {
           releaseConnection(db);
           if (err) {
             logger.error({ err }, 'Erro ao buscar CNH por ID');
